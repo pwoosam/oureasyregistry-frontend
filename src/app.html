@@ -1,4 +1,11 @@
 <template>
   <require from="./scss/application.css"></require>
   <h1>${message}</h1>
+  <div class="form-group form-inline">
+    <label for="phoneNumberInput">Phone Number</label>
+    <input type="text" class="form-control" id="phoneNumberInput" value.bind="phoneNumber">
+    <label for="messageInput">Message</label>
+    <input type="text" class="form-control" id="messageInput" value.bind="textMessage">
+  </div>
+  <button class="btn btn-primary" click.delegate="testTexting()">Send the message!</button>
 </template>
