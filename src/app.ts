@@ -1,22 +1,14 @@
-import { autoinject } from 'aurelia-dependency-injection';
-import { PostClient, PhoneMessage } from "./resources/client"
+import { Router } from 'aurelia-router';
 
-@autoinject()
 export class App {
-  private _apiClient: PostClient;
-  message = 'Hello World!';
-  phoneNumber: number;
-  textMessage: string;
+  router: Router;
 
-  constructor() {
-    this._apiClient = new PostClient('http://localhost:9001');
-  }
-
-  testTexting() {
-    const phoneMessage = new PhoneMessage({
-      phone_number: this.phoneNumber,
-      message: this.textMessage
-    });
-    this._apiClient.sms(phoneMessage);
+  configureRouter(config, router) {
+    this.router = router;
+    config.title = 'Aurelia';
+    config.map([
+      { route: ['', 'home'], name: 'home', moduleId: 'pages/home' },
+      { route: 'test', name: 'test', moduleId: 'pages/test' }
+    ]);
   }
 }
