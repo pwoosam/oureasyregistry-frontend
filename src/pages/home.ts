@@ -5,7 +5,7 @@ export class Home {
     message = 'Hello World!';
     phoneNumber: number;
     textMessage: string;
-    todos = [];
+    items = [];
   
     constructor() {
       this._apiClient = new PostClient('http://localhost:9001');
@@ -19,70 +19,75 @@ export class Home {
       this._apiClient.sms(phoneMessage);
     }
   
-    displayTodos() {
-      if (this.todos.length === 0) {
+    displayList() {
+      if (this.items.length === 0) {
         console.log('Your registry list is empty!');
       } else {
         console.log('My Registry:');
-        for (let i = 0; i < this.todos.length; i++) {
-          if (this.todos[i].completed === true ) { 
-            console.log('(x)', this.todos[i].todoText);
+        for (let i = 0; i < this.items.length; i++) {
+          if (this.items[i].completed === true ) { 
+            console.log('(x)', this.items[i].itemText);
           } else {
-            console.log('( )', this.todos[i].todoText);
+            console.log('( )', this.items[i].itemText);
           }
         }
       }
     }
 
-    changeTodo(pos, todoText) {
-      this.todos[pos].todoText = todoText;
-      this.displayTodos();
+    changeItem(pos, itemText) {
+      this.items[pos].itemText = itemText;
+      this.displayList();
     }
 
-    deleteTodo(pos) {
-      this.todos.splice(pos, 1);
-      this.displayTodos();
+    deleteItem(pos) {
+      this.items.splice(pos, 1);
+      this.displayList();
     }
     
     toggleCompleted(pos) {
-      var todo = this.todos[pos];
-      todo.completed = !todo.completed;
-      this.displayTodos();
+      var item = this.items[pos];
+      item.completed = !item.completed;
+      this.displayList();
     }
 
     toggleAll() {
-      var totalTodos = this.todos.length;
-      var completedTodos = 0;
+      var totalitems = this.items.length;
+      var completeditems = 0;
     
-      //Get number of completed todos.
-      for (let i = 0; i < totalTodos; i++) {
-        if (this.todos[i].completed === true) {
-          completedTodos++;
+      //Get number of completed items.
+      for (let i = 0; i < totalitems; i++) {
+        if (this.items[i].completed === true) {
+          completeditems++;
         }
       }
       
       // Case 1: If everything's true, make everything false.
-      if (completedTodos === totalTodos) {
-        for (let i = 0; i < totalTodos; i++) {
-          this.todos[i].completed = false;
+      if (completeditems === totalitems) {
+        for (let i = 0; i < totalitems; i++) {
+          this.items[i].completed = false;
         }
         // Case 2: Otherwise, make everything true.
       } else {
-        for (var i = 0; i < totalTodos; i++) {
-          this.todos[i].completed = true;
+        for (var i = 0; i < totalitems; i++) {
+          this.items[i].completed = true;
         }
       }
       
-      this.displayTodos();
+      this.displayList();
     }
 
-    addTodo() {
-      let addTodoTextInput: HTMLInputElement  = <HTMLInputElement>document.getElementById('addTodoTextInput')
-      this.todos.push({
-        todoText: addTodoTextInput.value,
-        completed: false
+    addItem() {
+      let addnameTextInput: HTMLInputElement  = <HTMLInputElement>document.getElementById('addnameTextInput')
+      let addpriceTextInput: HTMLInputElement  = <HTMLInputElement>document.getElementById('addpriceTextInput')
+      let addurlTextInput: HTMLInputElement  = <HTMLInputElement>document.getElementById('addurlTextInput')
+      
+      this.items.push({
+        name: addnameTextInput.value,
+        price: addpriceTextInput.value,
+        url: addurlTextInput.value,
+        purchased: false
       });
-      this.displayTodos();
-      addTodoTextInput.value = '';
+      this.displayList();
+      addnameTextInput.value = '';
     }
   }

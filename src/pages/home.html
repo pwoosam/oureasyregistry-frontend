@@ -19,27 +19,35 @@
         
     <h1>Registry</h1>
     <div>
-      <button type = "button" click.delegate="displayTodos()">Display Registry</button>
-      <button type = "button" click.delegate="toggleAll()">Toggle All</button>    </div>
+      <button type = "button" click.delegate="displayList()">Display Registry List</button>
+      <button type = "button" click.delegate="toggleAll()">Purchased</button>    </div>
     
     <div>
-      <button type = "button" click.delegate="addTodo()">Add</button>
-      <input id="addTodoTextInput" type="text">
+      <button type = "button" click.delegate="addItem()">Add</button>
+      <input id="additemTextInput" type="text">
+      <input id="addnameTextInput" type="text" placeholder="Item Name">
+      <input id="addpriceTextInput" type="text" placeholder="Item Price">
+      <input id="addurlTextInput" type="text" placeholder="Item URL">
+
     </div>
     
     <div>
-      <button></button>
-      <input>
-      <input>
+
       
     </div>
 
-    <div class='row' repeat.for="todo of todos">
+    <div class='row' repeat.for="item of items">
         <div class="col">
-            ${todo.todoText}
+            ${item.itemText}
         </div>
         <div class="col">
-            ${todo.completed}
+            ${item.name}
+        </div>
+        <div class="col">
+            ${item.price}
+        </div>
+        <div class="col">
+            ${item.url}
         </div>
     </div>
     
