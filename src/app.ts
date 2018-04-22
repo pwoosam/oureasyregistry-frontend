@@ -11,4 +11,5 @@ export class App {
       { route: 'test', name: 'test', moduleId: 'pages/test' }
     ]);
   }
+
 }

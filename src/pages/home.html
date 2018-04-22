@@ -9,4 +9,42 @@
         <input type="text" class="form-control" id="messageInput" value.bind="textMessage">
     </div>
     <button class="btn btn-primary" click.delegate="testTexting()">Send the message!</button>
+    <html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+        
+    <h1>Registry</h1>
+    <div>
+      <button type = "button" click.delegate="displayTodos()">Display Registry</button>
+      <button type = "button" click.delegate="toggleAll()">Toggle All</button>    </div>
+    
+    <div>
+      <button type = "button" click.delegate="addTodo()">Add</button>
+      <input id="addTodoTextInput" type="text">
+    </div>
+    
+    <div>
+      <button></button>
+      <input>
+      <input>
+      
+    </div>
+
+    <div class='row' repeat.for="todo of todos">
+        <div class="col">
+            ${todo.todoText}
+        </div>
+        <div class="col">
+            ${todo.completed}
+        </div>
+    </div>
+    
+    
+  </body>
+
+</html>
 </template>
