@@ -1,5 +1,4 @@
 import { autoinject } from 'aurelia-dependency-injection';
-import * as $ from "jquery";
 import { PostClient, PhoneMessage } from "./resources/client"
 
 @autoinject()
