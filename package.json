@@ -23,6 +23,7 @@
     "aurelia-tools": "^1.0.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "minimatch": "^3.0.2",
+    "nswag": "^11.17.2",
     "through2": "^2.0.1",
     "uglify-js": "^3.0.19",
     "vinyl-fs": "^2.4.3",
