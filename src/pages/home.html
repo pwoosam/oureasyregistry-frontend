@@ -11,12 +11,7 @@
     <button class="btn btn-primary" click.delegate="testTexting()">Send the message!</button>
     <html>
 
-  <head>
-    <link rel="stylesheet" href="style.css">
-  </head>
 
-  <body>
-        
     <h1>Registry</h1>
     <div>
       <button type = "button" click.delegate="displayList()">Display Registry List</button>
@@ -24,10 +19,9 @@
     
     <div>
       <button type = "button" click.delegate="addItem()">Add</button>
-      <input id="additemTextInput" type="text">
-      <input id="addnameTextInput" type="text" placeholder="Item Name">
-      <input id="addpriceTextInput" type="text" placeholder="Item Price">
-      <input id="addurlTextInput" type="text" placeholder="Item URL">
+      <input id="addNameTextInput" type="text" placeholder="Name">
+      <input id="addPriceTextInput" type="text" placeholder="Price">
+      <input id="addUrlTextInput" type="text" placeholder="Url">
 
     </div>
     
@@ -38,21 +32,19 @@
 
     <div class='row' repeat.for="item of items">
         <div class="col">
-            ${item.itemText}
-        </div>
-        <div class="col">
             ${item.name}
         </div>
         <div class="col">
-            ${item.price}
+            $${item.price}
         </div>
         <div class="col">
-            ${item.url}
+            <a href="${item.url}">Buy here</a>
+        </div>
+        <div class="col">
+            ${item.is_purchased}
+        </div>
+        <div class="col">
+            <button click.delegate="setPurchased(item)">Toggle Purchased</button>
         </div>
     </div>
-    
-    
-  </body>
-
-</html>
 </template>
